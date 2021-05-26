@@ -1,8 +1,10 @@
+import { GetServerSideProps } from "next";
 import Head from "next/head";
 import Finandy from "../components/Finandy";
+import { DataInputs } from "../redux/types";
 import { getFinData } from "../store/DB";
 
-export default function Home({ data }) {
+export default function Home({ data }: { data: DataInputs }) {
   return (
     <div className="container">
       <Head>
@@ -15,7 +17,7 @@ export default function Home({ data }) {
   );
 }
 
-export const getServerSideProps = async () => {
+export const getServerSideProps: GetServerSideProps = async () => {
   const data = await getFinData();
   return {
     props: {

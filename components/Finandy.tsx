@@ -4,9 +4,9 @@ import { sendData } from "../redux/finThunk";
 import styles from "../styles/Home.module.css";
 
 const Finandy = ({ data }) => {
-  const [price, setprice] = useState(data.price);
-  const [quantity, setquantity] = useState(data.quantity);
-  const [sum, setsum] = useState(data.sum);
+  const [price, setprice] = useState<number>(data.price);
+  const [quantity, setquantity] = useState<number>(data.quantity);
+  const [sum, setsum] = useState<number>(data.sum);
   const [changed, setchanged] = useState(null);
   const [isLoading, setisLoading] = useState(false);
 
@@ -14,8 +14,7 @@ const Finandy = ({ data }) => {
 
   const handleInputChange = (e) => {
     const target = e.target;
-    const value =
-      target.value > 0 ? Number.parseFloat(target.value).toFixed() : 1;
+    const value = target.value > 0 ? target.value : 1;
     const name = target.name;
 
     if (!changed) {
@@ -55,13 +54,13 @@ const Finandy = ({ data }) => {
 
   const sendDataInputs = async () => {
     setisLoading(true);
-    const response = await dispatch(sendData({ price, quantity, sum }));
+    const response: any = await dispatch(sendData({ price, quantity, sum }));
 
     if (sendData.fulfilled.match(response)) {
       setisLoading(false);
     } else {
       console.log(response.payload);
-      alert(response.payload)
+      alert(response.payload);
       setisLoading(false);
     }
   };

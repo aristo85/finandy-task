@@ -1,5 +1,12 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { getFinData, sendData } from "./finThunk";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { sendData } from "./finThunk";
+import { DataInputs } from "./types";
+
+type FinState = {
+  status: "loading" | "idle";
+  error: string | null;
+  finData: DataInputs;
+};
 
 const initialState = {
   finData: {
@@ -9,14 +16,14 @@ const initialState = {
   },
   error: null,
   status: "idle",
-};
+} as FinState;
 
 export const finandySlice = createSlice({
   name: "finandy",
   initialState,
   reducers: {
     // Use the PayloadAction type to declare the contents of `action.payload`
-    setValues: (state, action) => {
+    setValues: (state, action: PayloadAction<DataInputs>) => {
       state.finData = action.payload;
     },
   },

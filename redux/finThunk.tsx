@@ -1,7 +1,12 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
+import { DataInputs } from "./types";
 
 // login request
-export const sendData = createAsyncThunk(
+export const sendData = createAsyncThunk<
+DataInputs,
+DataInputs,
+{ rejectValue: any }
+>(
   "auth/login/request",
   async (dataInputs, thunkApi) => {
     const response = await fetch(`http://localhost:3000/api`, {
@@ -25,6 +30,6 @@ export const sendData = createAsyncThunk(
       // Return the known error for future handling
       return thunkApi.rejectWithValue("something went wrong with server");
     }
-    return resData;
+    return resData as DataInputs;
   }
 );
