@@ -8,4 +8,5 @@ npm install
 ```shell script
 npm run dev
 ```
-После открыть [http://localhost:3000](http://localhost:3000) с браузера. 
+**3.**
+открыть [http://localhost:3000](http://localhost:3000) с браузера. 
