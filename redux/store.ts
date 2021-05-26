@@ -1,11 +1,6 @@
-import { configureStore } from "@reduxjs/toolkit";
-import finandyReducer from "./finandySlice";
+import { createStore } from "redux";
+import reducer from "./finandyInputs/reducer";
 
-export const store = configureStore({
-  reducer: {
-    finandy: finandyReducer,
-  },
-});
-
-export type RootState = ReturnType<typeof store.getState>;
-export type AppDispatch = typeof store.dispatch;
+export const useStore = (initialState) => {
+  return createStore(reducer, initialState);
+};

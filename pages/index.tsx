@@ -1,7 +1,7 @@
 import { GetServerSideProps } from "next";
 import Head from "next/head";
 import Finandy from "../components/Finandy";
-import { DataInputs } from "../redux/types";
+import { DataInputs } from "../redux/finandyInputs/types";
 import { getFinData } from "../store/DB";
 
 export default function Home({ data }: { data: DataInputs }) {
