@@ -1,8 +1,5 @@
 export const SET_INPUTS = "SET_INPUTS";
-export const SET_PRICE = "SET_PRICE";
-export const SET_QUANTITY = "SET_QUANTITY";
-export const SET_SUM = "SET_SUM";
-export const SET_CHANGED = "SET_CHANGED";
+export const SET_STORE = "SET_STORE";
 
 export type DataInputs = {
   price: number;
@@ -17,7 +14,23 @@ export type DataState = {
   changed: string;
 };
 
-export type SetDataInputAction = {
-  type: string;
-  payload: DataInputs;
+export type FirstChangeData = {
+  price: number;
+  quantity: number;
+  sum: number;
+  changed: string;
+  value: number;
 };
+
+export type AfterFirstChangeData = {
+  price: number;
+  quantity: number;
+  sum: number;
+  changed: string;
+  current: string;
+};
+
+// export type SetDataInputAction = {
+//   type: string;
+//   payload: DataInputs;
+// };

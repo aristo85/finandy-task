@@ -1,18 +1,10 @@
-import {
-  DataInputs,
-  DataState,
-  SET_CHANGED,
-  SET_INPUTS,
-  SET_PRICE,
-  SET_QUANTITY,
-  SET_SUM,
-} from "./types";
+import { DataState, SET_INPUTS, SET_STORE } from "./types";
 
 const initialState: DataState = {
   price: 1,
   quantity: 1,
   sum: 1,
-  changed: ''
+  changed: "",
 };
 
 const reducer = (state: DataState = initialState, action): DataState => {
@@ -22,17 +14,11 @@ const reducer = (state: DataState = initialState, action): DataState => {
         ...state,
         ...action.payload,
       };
-    case SET_PRICE:
-      return { ...state, price: action.payload };
-
-    case SET_QUANTITY:
-      return { ...state, quantity: action.payload };
-
-    case SET_SUM:
-      return { ...state, sum: action.payload };
-
-    case SET_CHANGED:
-      return { ...state, changed: action.payload };
+    case SET_STORE:
+      return {
+        ...state,
+        ...action.payload,
+      };
 
     default:
       return state;
